@@ -1,0 +1,27 @@
+.optionsContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.dropDown{
+    position: absolute;
+    left: 0;
+    top: 35%;
+}
+.dropDownMenu{
+    list-style: none;
+}
+.sortMenu{
+    position: absolute;
+    right: 100%;
+    top: 7px;
+}
+.themeMenu{
+    position: absolute;
+    right: 100%;
+    top: 37px;
+}
+li{
+    margin: 10% 0%;
+    background-color: #9ec0b2;
+}

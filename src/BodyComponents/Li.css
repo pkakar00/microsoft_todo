@@ -1,0 +1,43 @@
+.li {
+  margin: 5px;
+  list-style: none;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  height: 5.4vh;
+  justify-content: space-between;
+}
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  padding: 1% 1%;
+}
+.impButton {
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align content to the center-right */
+}
+
+.img {
+  width: auto;
+  height: auto;
+  max-width: 100%; /* Set maximum width to ensure image doesn't overflow */
+  max-height: 100%; /* Set maximum height to ensure image doesn't overflow */
+  padding: 0;
+}
+
+.important {
+  background-color: red;
+}
+.listName {
+  font-size: 70%;
+}

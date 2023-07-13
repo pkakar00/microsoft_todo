@@ -1,0 +1,33 @@
+*{font-family: "Segoe UI", serif;}
+.extras{
+    display:flex;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    padding: 2%;
+    width: 100%;
+}
+.mainContent{
+    height:auto;
+    overflow-y: scroll;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+.inputBoxContainer{
+    display: flex;
+    height: 40px;
+}
+form{
+    width: 100%;
+}
+input{
+    height: 92%;
+    width: 98.2%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
