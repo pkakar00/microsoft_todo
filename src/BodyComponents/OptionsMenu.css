@@ -25,3 +25,6 @@ li{
     margin: 10% 0%;
     background-color: #9ec0b2;
 }
+.optionsContainer, .dropDown, .dropDownMenu, .sortMenu, .themeMenu, li :hover{
+    cursor: pointer;
+}

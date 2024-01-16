@@ -1,4 +1,4 @@
-import { useState, createContext, useReducer, useEffect } from "react";
+import {createContext, useReducer, useEffect } from "react";
 import "./App.css";
 import Navbar from "./Navbar";
 import Assigned from "./BodyComponents/Assigned";
@@ -8,8 +8,8 @@ import MyDay from "./BodyComponents/MyDay";
 import Planned from "./BodyComponents/Planned";
 import Tasks from "./BodyComponents/Tasks";
 import Untitled from "./BodyComponents/Untitled";
-import names from "./Navbar constants";
 import reducer from "./myDayReducer";
+import { Route, Routes } from "react-router-dom";
 
 export class Task {
   constructor(taskText, taskListName, completed, important) {
@@ -20,45 +20,40 @@ export class Task {
     this.time = new Date().getTime();
   }
 }
-
-function Body({ selection }) {
-  switch (selection) {
-    case names.MY_DAY:
-      return <MyDay />;
-    case names.IMPORTANT:
-      return <Important />;
-    case names.PLANNED:
-      return <Planned />;
-    case names.ASSIGNED:
-      return <Assigned />;
-    case names.FLAGGED:
-      return <Flagged />;
-    case names.TASKS:
-      return <Tasks />;
-    case names.UNTITLED:
-      return <Untitled />;
-    default:
-      return <h1>No Element</h1>;
-  }
+function Error(){
+  return <h1>Wrong Url :-D</h1>
 }
 
 export const TasksContext = createContext();
 function App() {
-  const [selection, changeSelection] = useState("My Day");
-
   const style = { backgroundColor: "#1c1c1c", color: "black" };
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(reducer,localStorage.hasOwnProperty("state") ? JSON.parse(localStorage.getItem("state")) : {
     appStyle: style,
     cardBackgroundColor: "#363636",
     hasCompletedTasks: false,
-    tasksArray: new Array(0),
+    tasksArray: new Array(0)
   });
+
+  useEffect(() => {
+    localStorage.setItem("state", JSON.stringify(state));
+    console.log("aaa");
+  }, [state]);
 
   return (
     <div className="mainContainer" style={style}>
-      <Navbar onChange={changeSelection} />
+      <Navbar/>
       <TasksContext.Provider value={{ state, dispatch }}>
-        <Body className="bodyElement" selection={selection} />
+        <Routes>
+          <Route path="/" element={<MyDay/>}/>
+          <Route path="/MyDay" element={<MyDay/>}/>
+          <Route path="/Important" element={<Important/>}/>
+          <Route path="/Planned" element={<Planned/>}/>
+          <Route path="/Assigned" element={<Assigned/>}/>
+          <Route path="/Flagged" element={<Flagged/>}/>
+          <Route path="/Tasks" element={<Tasks/>}/>
+          <Route path="/Untitled" element={<Untitled/>}/>
+          <Route path="*" element={<Error/>}/>
+        </Routes>
       </TasksContext.Provider>
     </div>
   );

@@ -2,6 +2,15 @@ import reducerTasks from "./ReducerTasks";
 
 export default function reducer(state, action) {
   switch (action.actionTask) {
+
+    case reducerTasks.FETCH_ALL_TASKS:
+      console.log("reducer=",action.storedState);
+      return{
+        appStyle:action.storedState.appStyle,
+        cardBackgroundColor:action.storedState.cardBackgroundColor,
+        hasCompletedTasks:action.storedState.hasCompletedTasks,
+        tasksArray:action.storedState.tasksArray
+      }
     case reducerTasks.NEW_TASK:
       return { ...state, tasksArray: [...state.tasksArray, action.info] };
 
@@ -13,7 +22,7 @@ export default function reducer(state, action) {
         }
         return task;
       });
-
+      
       updatedTasksArray.forEach((element) => {
         if (element.completed) x = true;
       });

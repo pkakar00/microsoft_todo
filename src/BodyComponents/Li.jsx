@@ -124,7 +124,7 @@ function ListItem({ task, index }) {
               checked={task.completed}
             />
             <div className="vertical">
-              <div className="taskText">{task.taskText}</div>
+              <div className="taskText"><pre>{task.taskText}</pre></div>
               <div className="listName">{task.taskListName}</div>
             </div>
           </div>

@@ -12,5 +12,6 @@ const reducerTasks={
     BLACK_THEME:"BLACK_THEME",
     WHITE_THEME:"WHITE_THEME",
     RED_THEME:"RED_THEME",
+    FETCH_ALL_TASKS:"FETCH_ALL_TASKS"
 }
 export default reducerTasks;
